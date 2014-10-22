@@ -7,23 +7,23 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Movimientos.Web.Api.Controllers.V1
+namespace Movimientos.Web.Api.Controllers.V2
 {
-    [ApiVersion1RoutePrefix("clientes")]
+    [ApiVersion2RoutePrefix("clientes")]
     public class ClientesController : ApiController
     {
-        [Route("", Name = "GetClientesV1")]
+        [Route("", Name = "GetClientesV2")]
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "version1", "value2" };
+            return new string[] { "version2", "value2" };
         }
 
-        [Route("", Name = "AddClienteV1")]
+        [Route("", Name = "AddClienteV2")]
         [HttpPost]
         public Cliente AddCliente(HttpRequestMessage requestMessage, Models.Cliente cliente)
         {
-            return new Cliente { Nombre = "V1" };
+            return new Cliente { Nombre = "V2" };
         }
 
     }
