@@ -1,4 +1,5 @@
-﻿using Movimientos.Web.Api.Models;
+﻿using Movimientos.Web.Api.MaintenanceProccesing;
+using Movimientos.Web.Api.Models;
 using Movimientos.Web.Common;
 using Movimientos.Web.Common.Routing;
 using System;
@@ -14,18 +15,18 @@ namespace Movimientos.Web.Api.Controllers.V1
     [UnitOfWorkActionFilter]
     public class ClientesController : ApiController
     {
-        [Route("", Name = "GetClientesV1")]
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IAddClienteMaintenanceProcessor _addClienteMP;
+
+        public ClientesController(IAddClienteMaintenanceProcessor addClienteMaintenanceProcessor)
         {
-            return new string[] { "version1", "value2" };
+            _addClienteMP = addClienteMaintenanceProcessor;
         }
 
         [Route("", Name = "AddClienteV1")]
         [HttpPost]
-        public Cliente AddCliente(HttpRequestMessage requestMessage, Models.Cliente cliente)
+        public Cliente AddCliente(HttpRequestMessage requestMessage, Models.NewCliente newCliente)
         {
-            return new Cliente { Nombre = "V1" };
+            return _addClienteMP.AddCliente(newCliente);
         }
 
     }

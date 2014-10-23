@@ -23,7 +23,7 @@ namespace Movimientos.Data.SqlServer.QueryProcessors
             _dateTime = dateTime;
         }
 
-        public void AddTask(Task task)
+        public void add(Task task)
         {
             //task.CreatedDate = _dateTime.UtcNow;
             //task.Status = _session.QueryOver<Status>().Where(x => x.Name == "Not Started").SingleOrDefault();
@@ -45,6 +45,11 @@ namespace Movimientos.Data.SqlServer.QueryProcessors
             //}
 
             //_session.SaveOrUpdate(task);
+        }
+
+        public void AddCliente(Entities.Cliente cliente)
+        {
+            _session.SaveOrUpdate(cliente);
         }
     }
 

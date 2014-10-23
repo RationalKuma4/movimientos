@@ -4,7 +4,12 @@ using log4net.Config;
 using Movimientos.Common;
 using Movimientos.Common.Logging;
 using Movimientos.Common.Security;
+using Movimientos.Common.TypeMapping;
+using Movimientos.Data.QueryProcessors;
 using Movimientos.Data.SqlServer.Mapping;
+using Movimientos.Data.SqlServer.QueryProcessors;
+using Movimientos.Web.Api.AutoMappingConfiguration;
+using Movimientos.Web.Api.MaintenanceProccesing;
 using Movimientos.Web.Common;
 using Movimientos.Web.Common.Security;
 using NHibernate;
@@ -16,7 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Movimientos.Web.Api.App_Start
+namespace Movimientos.Web.Api
 {
     public class NinjectConfigurator
     {
@@ -33,8 +38,13 @@ namespace Movimientos.Web.Api.App_Start
             ConfigureLog4Net(container);
             ConfigureUserSession(container);
             ConfigureNHibernate(container);
+            ConfigureAutoMapper(container);
 
             container.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
+
+            container.Bind<IAddClienteQueryProcessor>().To<AddClienteQueryProcessor>().InRequestScope();
+
+            container.Bind<IAddClienteMaintenanceProcessor>().To<AddClienteMaintenanceProcessor>().InRequestScope();
         }
 
         private void ConfigureLog4Net(IKernel container)
@@ -62,6 +72,20 @@ namespace Movimientos.Web.Api.App_Start
             var userSession = new UserSession();
             container.Bind<IUserSession>().ToConstant(userSession).InSingletonScope();
             container.Bind<IWebUserSession>().ToConstant(userSession).InSingletonScope();
+        }
+
+        private void ConfigureAutoMapper(IKernel container)
+        {
+            container.Bind<IAutoMapper>().To<AutoMapperAdapter>().InSingletonScope();
+
+            // Make IAutoMapperTypeConfigurator available for injection
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<ClienteEntityToClienteAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<NewClienteToClienteEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
         }
 
         private ISession CreateSession(Ninject.Activation.IContext arg)

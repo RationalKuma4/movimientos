@@ -9,5 +9,6 @@ namespace Movimientos.Web.Api.Models
     public class NewCliente
     {
         public string Nombre { get; set; }
+        public string UsuarioCreacion { get; set; }
     }
 }

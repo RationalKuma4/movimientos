@@ -114,9 +114,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfigurator.cs" />
     <Compile Include="App_Start\NinjectConfigurator.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMappingConfiguration\ClienteEntityToClienteAutoMapperTypeConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\NewClienteToClienteEntityAutoMapperTypeConfigurator.cs" />
     <Compile Include="Controllers\V1\ClientesController.cs" />
     <Compile Include="Controllers\V2\ClientesController.cs">
       <SubType>Code</SubType>
@@ -124,6 +127,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MaintenanceProccesing\AddClienteMaintenanceProcessor.cs" />
+    <Compile Include="MaintenanceProccesing\IAddClienteMaintenanceProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
