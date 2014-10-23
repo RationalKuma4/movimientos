@@ -42,6 +42,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Fianza.cs" />
+    <Compile Include="ILinkContaining.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="Movimiento.cs" />
     <Compile Include="NewCliente.cs" />

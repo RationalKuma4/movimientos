@@ -13,6 +13,7 @@ namespace Movimientos.Data.SqlServer.Mapping
         {
             Id(x => x.ClienteId);
             Map(x => x.Nombre).Not.Nullable();
+            
         }
     }
 }

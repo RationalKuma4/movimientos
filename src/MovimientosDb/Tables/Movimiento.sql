@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Movimientos]
+﻿CREATE TABLE [dbo].[Movimiento]
 (
 	[FianzaId] INT NOT NULL , 
     [EndosoId] INT NOT NULL, 
@@ -8,5 +8,5 @@
     [TipoMovimiento] CHAR(3) NOT NULL, 
     [ts] ROWVERSION NOT NULL, 
     PRIMARY KEY ([FianzaId], [MovimientoId], [EndosoId]), 
-    CONSTRAINT [FK_Movimientos_Fianzas] FOREIGN KEY ([FianzaId], [EndosoId]) REFERENCES [dbo].[Fianzas]([FianzaId], [EndosoId])
+    CONSTRAINT [FK_Movimientos_Fianzas] FOREIGN KEY ([FianzaId], [EndosoId]) REFERENCES [dbo].[Fianza]([FianzaId], [EndosoId])
 )

@@ -1,11 +1,11 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Movimientos.Web.Api.Models
 {
-    public abstract class ObjectBase
+    public abstract class ObjectBase : ILinkContaining
     {
         private List<Link> links;
 
@@ -14,8 +14,6 @@ namespace Movimientos.Web.Api.Models
             get { return links ?? (links = new List<Link>()); }
             set { links = value; }
         }
-
-        //lsdkfnsdkvsd
 
         public void AddLink(Link link)
         {
