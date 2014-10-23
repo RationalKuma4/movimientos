@@ -15,6 +15,8 @@ namespace Movimientos.Web.Api.Models
             set { links = value; }
         }
 
+
+
         public void AddLink(Link link)
         {
             Links.Add(link);
