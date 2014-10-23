@@ -1,11 +1,16 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using log4net.Config;
+using Movimientos.Common;
 using Movimientos.Common.Logging;
+using Movimientos.Common.Security;
 using Movimientos.Data.SqlServer.Mapping;
+using Movimientos.Web.Common;
+using Movimientos.Web.Common.Security;
 using NHibernate;
 using NHibernate.Context;
 using Ninject;
+using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +31,10 @@ namespace Movimientos.Web.Api.App_Start
         {
             //throw new NotImplementedException();
             ConfigureLog4Net(container);
+            ConfigureUserSession(container);
             ConfigureNHibernate(container);
+
+            container.Bind<IDateTime>().To<DateTimeAdapter>().InSingletonScope();
         }
 
         private void ConfigureLog4Net(IKernel container)
@@ -46,6 +54,14 @@ namespace Movimientos.Web.Api.App_Start
 
             container.Bind<ISessionFactory>().ToConstant(sessionFactory);
             container.Bind<ISession>().ToMethod(CreateSession);
+            container.Bind<IActionTransactionHelper>().To<ActionTransactionHelper>().InRequestScope();
+        }
+
+        private void ConfigureUserSession(IKernel container)
+        {
+            var userSession = new UserSession();
+            container.Bind<IUserSession>().ToConstant(userSession).InSingletonScope();
+            container.Bind<IWebUserSession>().ToConstant(userSession).InSingletonScope();
         }
 
         private ISession CreateSession(Ninject.Activation.IContext arg)

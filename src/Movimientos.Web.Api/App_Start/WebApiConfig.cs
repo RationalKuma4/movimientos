@@ -1,4 +1,5 @@
-﻿using Movimientos.Web.Common;
+﻿using Movimientos.Common.Logging;
+using Movimientos.Web.Common;
 using Movimientos.Web.Common.Routing;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Http.Routing;
+using System.Web.Http.Tracing;
 
 namespace Movimientos.Web.Api
 {
@@ -14,6 +16,8 @@ namespace Movimientos.Web.Api
         public static void Register(HttpConfiguration config)
         {
             ConfigureRouting(config);
+            //config.EnableSystemDiagnosticsTracing();
+            config.Services.Replace(typeof(ITraceWriter), new SimpleTraceWriter(WebContainerManager.Get<ILogManager>()));
         }
 
         private static void ConfigureRouting(HttpConfiguration config)
