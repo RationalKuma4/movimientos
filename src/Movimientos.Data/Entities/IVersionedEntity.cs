@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Movimientos.Data.Entities
 {
-    public abstract class EntityBase : IVersionedEntity
+    public interface IVersionedEntity
     {
-        public virtual byte[] Version { get; set; }
+        byte[] Version { get; set; }
     }
 }

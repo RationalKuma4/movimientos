@@ -1,4 +1,5 @@
 ﻿using Movimientos.Web.Api.Models;
+using Movimientos.Web.Common;
 using Movimientos.Web.Common.Routing;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Web.Http;
 namespace Movimientos.Web.Api.Controllers.V2
 {
     [ApiVersion2RoutePrefix("clientes")]
+    [UnitOfWorkActionFilter]
     public class ClientesController : ApiController
     {
         [Route("", Name = "GetClientesV2")]

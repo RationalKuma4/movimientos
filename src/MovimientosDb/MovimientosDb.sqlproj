@@ -23,6 +23,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <GenerateCreateScript>True</GenerateCreateScript>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -59,5 +60,13 @@
     <Folder Include="Properties" />
     <Folder Include="Scripts" />
     <Folder Include="Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Clientes.sql" />
+    <Build Include="Tables\Fianzas.sql" />
+    <Build Include="Tables\Movimientos.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="MovimientosDb.refactorlog" />
   </ItemGroup>
 </Project>
