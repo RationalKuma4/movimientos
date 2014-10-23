@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Movimientos.Web.Api.Models
 {
-    public abstract class ObjectBase
+    public abstract class ObjectBase : ILinkContaining
     {
         private List<Link> links;
 

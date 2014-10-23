@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{4a4812c2-d5b9-4806-84fb-c13803e3b6f2}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureDatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -62,9 +62,9 @@
     <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Clientes.sql" />
-    <Build Include="Tables\Fianzas.sql" />
-    <Build Include="Tables\Movimientos.sql" />
+    <Build Include="Tables\Cliente.sql" />
+    <Build Include="Tables\Fianza.sql" />
+    <Build Include="Tables\Movimiento.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="MovimientosDb.refactorlog" />

@@ -128,7 +128,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MaintenanceProccesing\AddClienteMaintenanceProcessor.cs" />
+    <Compile Include="MaintenanceProccesing\ClienteCreatedActionResult.cs" />
     <Compile Include="MaintenanceProccesing\IAddClienteMaintenanceProcessor.cs" />
+    <Compile Include="MaintenanceProccesing\LocationLinkCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
